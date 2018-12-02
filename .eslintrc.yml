@@ -1,0 +1,4 @@
+extends: airbnb-base
+rules:
+  camelcase: 1
+  arrow-body-style: 1
