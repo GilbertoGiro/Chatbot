@@ -50,7 +50,7 @@ router.post('/message', (req, res) => {
 app.use('/api', router);
 app.get('/', (_, res) => res.send('API is working'));
 
-const port = process.env.APP_PORT || 3000;
+const port = process.env.PORT || 3000;
 const connection = app.listen(port, () => {
   const address = connection.address();
   console.log(JSON.stringify(address, null, 2));
