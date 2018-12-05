@@ -1,0 +1,166 @@
+@font-face {
+    font-family: Raleway;
+    src: url('../fonts/Raleway/Raleway-Regular.ttf');
+}
+
+html {
+    font-family: Raleway, sans-serif;
+    color: #333;
+}
+
+.cellphone {
+    width: 350px;
+    height: 630px;
+    border-radius: 40px;
+    border: 3px solid #65737e;
+    background-color: #f9f9f9;
+    margin: 45px auto auto auto;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.cellphone-content {
+    background: #515C64;
+    border-radius: 37px;
+}
+
+.cellphone-header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 37px;
+    border-top-left-radius: 37px;
+}
+
+.cellphone-header .sound {
+    width: 70px;
+    height: 6px;
+    border-radius: 15px;
+    background-color: #666;
+    border: 1px solid #777;
+}
+
+.cellphone-header .camera {
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    border-radius: 50%;
+    border: 1px solid #777;
+    background-color: #666;
+}
+
+.cellphone-header .camera .lens {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #005B91;
+}
+
+.cellphone-body {
+    width: 96%;
+    margin: auto;
+    height: 490px;
+    border-radius: 2px;
+    background-image: url('../img/default.jpg');
+}
+
+.cellphone-body .whatsapp .whatsapp-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    text-align: right;
+    background: #F5F5F5;
+    align-items: center;
+    justify-content: flex-end;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.cellphone-body .whatsapp .whatsapp-header .whatsapp-profile-name {
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.cellphone-body .whatsapp .whatsapp-header .whatsapp-profile-photo img {
+    margin: 4px 4px 0 0;
+    border-radius: 50%;
+}
+
+.cellphone-body .whatsapp .whatsapp-body {
+    width: 100%;
+    height: 400px;
+}
+
+.cellphone-body .whatsapp .whatsapp-body .messages {
+    padding: 8px 8px 0 8px;
+    max-height: 390px;
+    overflow-y: auto;
+}
+
+.cellphone-body .whatsapp .whatsapp-body .message {
+    width: auto;
+    padding: 12px;
+    font-size: 13px;
+    max-width: 250px;
+    background: #FFFFFF;
+    text-align: left;
+    border-radius: 6px;
+    display: inline-block;
+    margin: 6px 0 6px 0;
+}
+
+.cellphone-body .whatsapp .whatsapp-body .user-message {
+    display: block;
+    text-align: right;
+}
+
+.cellphone-body .whatsapp .whatsapp-body .user-message .message {
+    background-color: #e1ffc7;
+}
+
+.cellphone-body .whatsapp .whatsapp-footer {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    background: #E9E9E9;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.cellphone-body .whatsapp .whatsapp-footer input {
+    width: 80%;
+    padding: 6px;
+    border: 1px solid #CCC;
+    font-family: Raleway, sans-serif;
+}
+
+.cellphone-body .whatsapp .whatsapp-footer button {
+    border: 0;
+    padding: 5px 8px 5px 5px;
+    color: #40A1CD;
+    font-size: 16px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.cellphone-footer {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 37px;
+    border-top-left-radius: 37px;
+}
+
+.cellphone-footer .button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #777;
+    background-color: #666;
+}

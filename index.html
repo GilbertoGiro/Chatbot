@@ -2,9 +2,96 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Watson Conversation test</title>
+        <title>Watson Conversation</title>
+
+        <!-- Personal Style -->
+        <link rel="stylesheet" href="public/css/style.css">
     </head>
     <body>
-
+        <div class="cellphone">
+            <div class="cellphone-content">
+                <div class="cellphone-header">
+                    <span class="camera"></span>
+                    <span class="sound"></span>
+                </div>
+                <div class="cellphone-body">
+                    <div class="whatsapp">
+                        <div class="whatsapp-content">
+                            <div class="whatsapp-header">
+                                <div class="whatsapp-profile-name">
+                                    <span style="display:block;">Jeriscleuson (Chatbot)</span>
+                                    <span style="display:block;font-weight: normal;font-size:11px;">Online</span>
+                                </div>
+                                <div class="whatsapp-profile-photo">
+                                    <img src="public/img/jeriscleuson.jpg" alt="" width="35px" height="35px">
+                                </div>
+                            </div>
+                            <div class="whatsapp-body">
+                                <div class="messages"></div>
+                            </div>
+                            <div class="whatsapp-footer">
+                                <input type="text" class="text-message" placeholder="Escreva sua mensagem aqui...">
+                                <button class="send-message">
+                                    <i class="fa fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cellphone-footer">
+                    <span class="button"></span>
+                </div>
+            </div>
+        </div>
     </body>
+
+    <!-- Font Awesome Javascript -->
+    <script src="public/fontawesome/svg-with-js/js/fontawesome-all.js"></script>
+
+    <!-- Jquery Javascript -->
+    <script src="public/js/jquery.min.js"></script>
+
+    <!-- Personal Javascript -->
+    <script>
+        $(document).ready(function () {
+            $('.text-message').on('keypress', function (event) {
+                if (event.which === 13) {
+                    let value = $(this).val();
+                    if (value) {
+                        $('.messages').append(userMessage(value));
+                        $('.text-message').val('');
+                        sendMessage(value);
+                    }
+                }
+            });
+        });
+
+        // Method to send message
+        function sendMessage(value) {
+            let request = $.ajax({
+                url: 'https://chat-bot-fatec-project.herokuapp.com/api/message',
+                method: 'POST',
+                data: {
+                    message: value
+                }
+            });
+
+            request
+                .success((response) => {
+                    $('.messages').append('<span class="message">' + response.text + '</span>');
+                })
+                .error((error) => {
+                    console.log('Não foi possível enviar a mensagem');
+                });
+        }
+
+        // Method to prepare Chatbot Message
+        function userMessage(message) {
+            return '<div class="user-message">\n' +
+                        '<span class="message">\n' +
+                            message +
+                        '</span>\n' +
+                    '</div>';
+        }
+    </script>
 </html>
