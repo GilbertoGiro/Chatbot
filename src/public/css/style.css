@@ -8,6 +8,10 @@ html {
     color: #333;
 }
 
+.messages::-webkit-scrollbar {
+    width: 0 !important;
+}
+
 .cellphone {
     width: 350px;
     height: 630px;

@@ -58,12 +58,16 @@
                 if (event.which === 13) {
                     let value = $(this).val();
                     if (value) {
-                        $('.messages').append(userMessage(value));
+                        let div = $('.messages');
+                        div.append(userMessage(value));
+                        div.animate({scrollTop: div[0].scrollHeight});
+
                         $('.text-message').val('');
                         sendMessage(value);
                     }
                 }
             });
+            sendMessage('Recomeçar');
         });
 
         // Method to send message
@@ -78,11 +82,13 @@
 
             request
                 .success((response) => {
-                  if (response.messages !== undefined && response.messages.length > 0) {
-                    for(var i = 0; i < response.messages.length; i++) {
-                        $('.messages').append('<span class="message">' + response.messages[i] + '</span>');
+                    let div = $('.messages');
+                    if (response.messages !== undefined && response.messages.length > 0) {
+                        for (let i = 0; i < response.messages.length; i++) {
+                            div.append('<span class="message">' + response.messages[i] + '</span>');
+                        }
                     }
-                  }
+                    div.animate({scrollTop: div[0].scrollHeight});
                 })
                 .error((xhr, ajaxOptions, thrownError) => {
                     console.log('Não foi possível enviar a mensagem');
@@ -92,10 +98,10 @@
         // Method to prepare Chatbot Message
         function userMessage(message) {
             return '<div class="user-message">\n' +
-                        '<span class="message">\n' +
-                            message +
-                        '</span>\n' +
-                    '</div>';
+                '<span class="message">\n' +
+                message +
+                '</span>\n' +
+                '</div>';
         }
     </script>
 </html>
