@@ -35,15 +35,19 @@ configDatabase()
       const workspace_id = 'd30188f7-382d-49ec-be76-8a9a4a4df047';
       const { body } = req;
 
-      Context.find()
-        .then((contexts) => {
-          const olderContext = contexts[0];
-          sendWatsonMessage(body.message, { workspace_id, context: olderContext ? olderContext.context : {} })
+      let contextModel;
+      Context.findOne()
+        .then((context) => {
+          contextModel = context;
+          sendWatsonMessage(body.message, { workspace_id, context: contextModel ? contextModel.context : {} })
             .then((response) => {
-              console.log(response.context);
               // Save new context
-              const context = new Context({ context: response.context });
-              context.save();
+              if (!contextModel) {
+                contextModel = new Context({ context: response.context });
+              } else {
+                contextModel.context = response.context;
+              }
+              contextModel.save();
 
               const { text: messages } = response.output;
               res.send({ messages });
