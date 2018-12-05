@@ -78,9 +78,13 @@
 
             request
                 .success((response) => {
-                    $('.messages').append('<span class="message">' + response.text + '</span>');
+                  if (response.messages !== undefined && response.messages.length > 0) {
+                    for(var i = 0; i < response.messages.length; i++) {
+                        $('.messages').append('<span class="message">' + response.messages[i] + '</span>');
+                    }
+                  }
                 })
-                .error((error) => {
+                .error((xhr, ajaxOptions, thrownError) => {
                     console.log('Não foi possível enviar a mensagem');
                 });
         }
